@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+    h1= title
+    form(action="." method="POST" class="form-group col-md-3")
+        label(for="name") Name:
+        input(
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+        )
+
+        label(for="email") Email:
+        input(
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+        )
+
+        input(type="submit" class="btn btn-primary" value="Submit")
