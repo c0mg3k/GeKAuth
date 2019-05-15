@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
+var startup = require('./startup');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -24,6 +26,14 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/account', accountRouter);
 
+//mongoose connection
+const db = mongoose.connect(startup.connectonstring, { useNewUrlParser: true }).then((err) => {
+  if(err) {
+    console.log(`error connecting to mlab: ${err.message}`);
+  } else {
+    console.log(`connection to mlab successful!`);
+  }
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
