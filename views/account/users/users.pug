@@ -1,0 +1,22 @@
+extends ../../layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  -var userlist = users
+
+  div
+    table.table.table-hover
+      thead
+        tr: th Users
+      tbody
+        tr
+          td First Name
+          td Last Name
+          td User Name
+        each user in users
+          tr
+            td=user.FirstName
+            td=user.LastName
+            td=user.UserName

@@ -27,13 +27,16 @@ app.use('/users', usersRouter);
 app.use('/account', accountRouter);
 
 //mongoose connection
-const db = mongoose.connect(startup.connectonstring, { useNewUrlParser: true }).then((err) => {
+const db = mongoose.connect(startup.connectonstring, { useNewUrlParser: true }, (err)=>{
   if(err) {
-    console.log(`error connecting to mlab: ${err.message}`);
+    console.log(`error connectiong to db: ${err}`);
   } else {
-    console.log(`connection to mlab successful!`);
+    console.log(`db connection success!`);
   }
 });
+
+db.then(console.log(db));
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
