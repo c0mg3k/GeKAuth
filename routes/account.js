@@ -23,6 +23,11 @@ router.get(`/users`, (req, res, next) => {
     }
   });
 });
+//GET user page
+router.get(`/user/:id`, (req, res) => {
+  console.log(`user detail route hit...`);
+  res.render(`/detail`, accountuser.find({id: id}));
+});
 //Data Endpoints
 //POST registration data
 router.post('/register', (req, res, next) => {
@@ -47,6 +52,6 @@ router.post('/register', (req, res, next) => {
   }
 });
   console.log(req.body);
-  res.redirect('../index');
+  res.redirect('/');
 });
 module.exports = router;

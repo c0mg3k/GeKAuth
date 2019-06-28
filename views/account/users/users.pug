@@ -16,7 +16,7 @@ block content
           td Last Name
           td User Name
         each user in users
-          tr
+          tr(onclick=`window.location.href="/user/${user.id}"`)
             td=user.FirstName
             td=user.LastName
             td=user.UserName
